@@ -57,9 +57,9 @@ const LinkedListVisualizer: React.FC<LinkedListVisualizerProps> = ({
         operation = 'Merging lists'
       } else if (
         JSON.stringify(list1.map((node) => node.value)) !==
-          JSON.stringify(prevList1.map((node) => node.value)) ||
+        JSON.stringify(prevList1.map((node) => node.value)) ||
         JSON.stringify(list2.map((node) => node.value)) !==
-          JSON.stringify(prevList2.map((node) => node.value))
+        JSON.stringify(prevList2.map((node) => node.value))
       ) {
         setAnimationType('update')
 
@@ -175,7 +175,7 @@ const LinkedListVisualizer: React.FC<LinkedListVisualizerProps> = ({
     node: any,
     index: number,
     isLast: boolean,
-    list: any[],
+    _list: any[],
     prevList: any[],
   ) => {
     const isSingly = listType === 'singly'
@@ -352,7 +352,7 @@ const LinkedListVisualizer: React.FC<LinkedListVisualizerProps> = ({
   // Render removed nodes (for exit animations)
   const renderRemovedNodes = (
     prevList: any[],
-    currentList: any[],
+    _currentList: any[],
     listId: string,
   ) => {
     return prevList

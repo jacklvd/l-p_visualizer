@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api import maze, path, linkedlist
 
 app = FastAPI(
-    title="Algo Visualizer API",
+    title="P+L Visualizer API",
     description="API for generating mazes,finding paths using various algorithms, and visualizing linked lists.",
     docs_url="/docs",
     version="1.0.0",
