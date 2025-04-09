@@ -42,4 +42,4 @@ output:
 Feel free to use and modify anything. This is a project for learning purpose.
 
 ## Author:
-@jacklvd
+[@jacklvd](https://www.github.com/jacklvd)
