@@ -27,21 +27,20 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20  # Using Node.js 20 which is more stable
-          cache: 'npm'  # Using npm since yarn.lock is missing
-      - name: Install Yarn
-        run: npm install -g yarn
-      - name: Generate yarn.lock
-        run: |
-          yarn install
+          node-version: 23
+          cache: "yarn"
+          cache-dependency-path: "**/yarn.lock"
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
       - name: Setup Pages
@@ -49,8 +48,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist folder
-          path: './dist'
+          # Upload frontend's dist folder
+          path: "./frontend/dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
