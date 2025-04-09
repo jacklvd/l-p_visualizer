@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import maze, path, linkedlist
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = FastAPI(
     title="P+L Visualizer API",
@@ -14,6 +18,7 @@ origins = [
     "http://localhost:8080",
     "http://localhost:3000",
     "http://localhost:5173",
+    os.environ.get("FRONTEND_URL"),
 ]
 
 # Configure CORS
