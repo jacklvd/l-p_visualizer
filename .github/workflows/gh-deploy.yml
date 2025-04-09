@@ -33,10 +33,15 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 23
-          cache: 'yarn'
+          node-version: 20  # Using Node.js 20 which is more stable
+          cache: 'npm'  # Using npm since yarn.lock is missing
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Generate yarn.lock
+        run: |
+          yarn install
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Build
         run: yarn build
       - name: Setup Pages
