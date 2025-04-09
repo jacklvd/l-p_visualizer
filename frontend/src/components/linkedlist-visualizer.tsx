@@ -57,9 +57,9 @@ const LinkedListVisualizer: React.FC<LinkedListVisualizerProps> = ({
         operation = 'Merging lists'
       } else if (
         JSON.stringify(list1.map((node) => node.value)) !==
-        JSON.stringify(prevList1.map((node) => node.value)) ||
+          JSON.stringify(prevList1.map((node) => node.value)) ||
         JSON.stringify(list2.map((node) => node.value)) !==
-        JSON.stringify(prevList2.map((node) => node.value))
+          JSON.stringify(prevList2.map((node) => node.value))
       ) {
         setAnimationType('update')
 
@@ -302,46 +302,36 @@ const LinkedListVisualizer: React.FC<LinkedListVisualizerProps> = ({
           </motion.div>
         )}
 
-        {/* Prev pointer for doubly linked list (shown as curved arrow below) */}
-        {!isSingly && index > 0 && node.prev && (
+        {/* Prev pointer for doubly linked list */}
+        {!isSingly && index > 0 && (
           <>
-            {/* Curved arrow below nodes */}
             <motion.div
-              className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-16 flex justify-center"
+              className="absolute top-3 left-[-30px] flex flex-col items-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.2 + staggerDelay }}
             >
               <svg
-                width="60"
-                height="14"
-                viewBox="0 0 60 14"
+                width="24"
+                height="12"
+                viewBox="0 0 24 12"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M5 1 L30 13 L55 1"
-                  stroke="#a855f7"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-                <path
-                  d="M5 1 L1 5"
+                  d="M28 6 L4 6"
                   stroke="#a855f7"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
                 <path
-                  d="M5 1 L9 5"
+                  d="M8 2 L4 6 L8 10"
                   stroke="#a855f7"
                   strokeWidth="2"
                   strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
-              <div className="absolute top-6 text-purple-500 text-xs font-bold">
-                prev
-              </div>
             </motion.div>
           </>
         )}
